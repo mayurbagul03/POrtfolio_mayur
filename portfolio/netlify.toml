@@ -1,0 +1,12 @@
+# Netlify configuration for this static portfolio.
+# No build step is needed — the site is plain HTML/CSS/JS.
+
+[build]
+  publish = "."        # serve files from the repo root
+  command = ""         # nothing to build
+
+# Optional: keep these files cached sensibly.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"

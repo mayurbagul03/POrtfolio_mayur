@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mayur Bagul — Full-stack Software Engineer</title>
+<meta name="description" content="Mayur Sunil Bagul — Full-stack Software Engineer building object-oriented backend services, RESTful APIs, and payment systems with Java, Python, Spring Boot, and React." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['Inter', 'sans-serif'],
+      },
+      colors: {
+        ink: '#0a0e14',
+        panel: '#0f141d',
+        line: '#1c2530',
+        sub: '#8b98a9',
+        fg: '#d6deeb',
+        acc: '#5ccfe6',
+        acc2: '#bae67e',
+        warn: '#ffae57',
+        pink: '#f78c6c',
+      },
+    },
+  },
+};
+</script>
+<style>
+  html, body { background: #0a0e14; }
+  ::selection { background: #5ccfe6; color: #0a0e14; }
+  /* grid backdrop */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(28,37,48,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(28,37,48,0.5) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  }
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .caret::after { content:'▌'; color:#5ccfe6; animation: blink 1.05s steps(1) infinite; margin-left:2px;}
+  @keyframes blink { 50% { opacity: 0; } }
+  .glow { box-shadow: 0 0 0 1px rgba(92,207,230,.15), 0 18px 50px -20px rgba(92,207,230,.25); }
+  .link-underline { background-image: linear-gradient(#5ccfe6,#5ccfe6); background-size: 0% 1px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .3s; }
+  .link-underline:hover { background-size: 100% 1px; }
+
+  /* ---- experience timeline animations ---- */
+  #timeline-line { transform: scaleY(0); transform-origin: top; transition: transform 1.1s cubic-bezier(.4,0,.2,1); }
+  #timeline-line.in { transform: scaleY(1); }
+  .tl-item { opacity: 0; transform: translateX(-28px); transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); }
+  .tl-item.in { opacity: 1; transform: none; }
+  .tl-dot { transform: scale(0); transition: transform .45s cubic-bezier(.34,1.56,.64,1); }
+  .tl-item.in .tl-dot { transform: scale(1); }
+  .tl-item.in .tl-dot::after {
+    content:''; position:absolute; inset:-5px; border-radius:9999px;
+    border:2px solid currentColor; opacity:0; animation: tl-ping 1.6s ease-out .25s 1;
+  }
+  @keyframes tl-ping { 0%{opacity:.7; transform:scale(.6);} 80%,100%{opacity:0; transform:scale(1.7);} }
+  .tl-bullet { opacity: 0; transform: translateY(6px); transition: opacity .45s ease, transform .45s ease; }
+  .tl-item.in .tl-bullet { opacity: 1; transform: none; }
+  .tl-item:hover .tl-dot { box-shadow: 0 0 14px 1px currentColor; }
+  .tl-item { transition-property: opacity, transform; }
+  .tl-card { transition: transform .25s ease, border-color .25s ease; }
+  .tl-item:hover .tl-card { transform: translateX(4px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity:1 !important; transform:none !important; transition:none; }
+    .caret::after { animation: none; }
+    html { scroll-behavior: auto; }
+    #timeline-line, .tl-item, .tl-dot, .tl-bullet { opacity:1 !important; transform:none !important; transition:none !important; }
+    .tl-item.in .tl-dot::after { animation: none !important; }
+  }
+</style>
+</head>
+<body class="bg-ink text-fg font-sans antialiased selection:bg-acc">
+
+<!-- ===== NAV ===== -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-line/70 bg-ink/80 backdrop-blur-md">
+  <nav class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between">
+    <a href="#top" class="font-mono text-sm font-extrabold tracking-tight">
+      <span class="text-acc">~/</span>mayur<span class="text-sub">.bagul</span>
+    </a>
+    <div class="hidden md:flex items-center gap-7 font-mono text-[13px] text-sub">
+      <a href="#about" class="link-underline hover:text-fg">about</a>
+      <a href="#skills" class="link-underline hover:text-fg">skills</a>
+      <a href="#work" class="link-underline hover:text-fg">work</a>
+      <a href="#projects" class="link-underline hover:text-fg">projects</a>
+      <a href="resume.html" target="_blank" rel="noopener" class="link-underline hover:text-fg">resume ↗</a>
+      <a href="#contact" class="link-underline hover:text-fg">contact</a>
+    </div>
+    <a href="resume.html" target="_blank" rel="noopener" class="font-mono text-[13px] px-3 py-1.5 rounded border border-acc/40 text-acc hover:bg-acc hover:text-ink transition-colors">
+      Resume ↗
+    </a>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="top" class="relative pt-32 pb-24 overflow-hidden">
+  <div class="absolute inset-0 grid-bg pointer-events-none"></div>
+  <div class="relative max-w-6xl mx-auto px-5">
+    <div class="grid lg:grid-cols-[1fr_auto] gap-12 items-center">
+      <!-- left: intro -->
+      <div>
+        <div class="font-mono text-[13px] text-acc2 mb-5">
+          <span class="text-sub">$</span> whoami
+        </div>
+        <h1 class="font-mono font-extrabold tracking-tight text-4xl sm:text-6xl lg:text-7xl leading-[1.05]">
+          Mayur Bagul
+        </h1>
+        <p id="role" class="font-mono text-acc text-lg sm:text-2xl mt-4 caret"></p>
+        <p class="mt-7 max-w-xl text-sub text-base sm:text-lg leading-relaxed">
+          I'm a full-stack software engineer with over three years of experience building
+          object-oriented backend services, RESTful APIs, and the payment systems that businesses
+          rely on every day. I work mainly in <span class="text-fg">Java</span> and
+          <span class="text-fg">Python</span> with <span class="text-fg">React</span> on the front end,
+          and I'm currently finishing my Master's in Computer Science.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3 font-mono text-[13px]">
+          <a href="resume.html" target="_blank" rel="noopener" class="px-4 py-2 rounded bg-acc text-ink font-semibold hover:bg-acc/90 transition-colors">View résumé ↗</a>
+          <a href="#work" class="px-4 py-2 rounded border border-line text-fg hover:border-acc hover:text-acc transition-colors">View experience</a>
+          <a href="mailto:mbagul30@gmail.com" class="px-4 py-2 rounded border border-line text-fg hover:border-acc hover:text-acc transition-colors">Email me</a>
+          <a href="https://github.com/mayurbagul03" target="_blank" rel="noopener" class="px-4 py-2 rounded border border-line text-fg hover:border-acc hover:text-acc transition-colors">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/mbagul/" target="_blank" rel="noopener" class="px-4 py-2 rounded border border-line text-fg hover:border-acc hover:text-acc transition-colors">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <!-- right: profile photo -->
+      <div class="reveal mx-auto lg:mx-0">
+        <div class="relative w-56 sm:w-64">
+          <div class="absolute -inset-3 rounded-2xl bg-gradient-to-br from-acc/25 via-transparent to-acc2/20 blur-xl"></div>
+          <div class="relative rounded-2xl border border-line bg-panel p-2 glow">
+            <!-- SWAP THIS: replace src with your photo, e.g. src="profile.jpg".
+                 Recommended: a square headshot, ~600x600px. -->
+            <img id="profile-photo" src="profile.jpg" alt="Mayur Bagul"
+                 class="w-full aspect-square object-cover rounded-xl"
+                 onerror="this.style.display='none';document.getElementById('photo-fallback').style.display='flex';">
+            <!-- fallback shown ONLY if profile.jpg is missing -->
+            <div id="photo-fallback" class="w-full aspect-square rounded-xl bg-ink border border-line flex-col items-center justify-center text-center" style="display:none;">
+              <div class="font-mono text-5xl font-extrabold text-acc">MB</div>
+              <div class="font-mono text-[11px] text-sub mt-3 px-4">add profile.jpg<br>next to index.html</div>
+            </div>
+          </div>
+          <div class="absolute -bottom-3 -right-3 font-mono text-[11px] bg-ink border border-line rounded px-2 py-1 text-acc2">● available for work</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- signature: code window -->
+    <div class="mt-16 reveal rounded-lg border border-line overflow-hidden glow max-w-3xl">
+      <div class="flex items-center gap-2 bg-panel px-4 py-2.5 border-b border-line">
+        <span class="w-3 h-3 rounded-full bg-pink"></span>
+        <span class="w-3 h-3 rounded-full bg-warn"></span>
+        <span class="w-3 h-3 rounded-full bg-acc2"></span>
+        <span class="ml-3 font-mono text-xs text-sub">Engineer.java</span>
+      </div>
+      <pre class="bg-ink px-5 py-5 font-mono text-[12.5px] sm:text-sm leading-relaxed overflow-x-auto"><code><span class="text-pink">public class</span> <span class="text-warn">Engineer</span> {
+  <span class="text-pink">String</span> name     = <span class="text-acc2">"Mayur Bagul"</span>;
+  <span class="text-pink">String</span> role     = <span class="text-acc2">"Full-stack Software Engineer"</span>;
+  <span class="text-pink">String[]</span> stack  = {<span class="text-acc2">"Java"</span>, <span class="text-acc2">"Python"</span>, <span class="text-acc2">"Spring Boot"</span>, <span class="text-acc2">"React"</span>, <span class="text-acc2">"AWS"</span>};
+  <span class="text-pink">String</span> focus    = <span class="text-acc2">"APIs, payments & backend services"</span>;
+  <span class="text-pink">boolean</span> openToWork = <span class="text-acc">true</span>;
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="py-20 border-t border-line/60">
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-[260px_1fr] gap-12">
+    <div class="reveal">
+      <div class="font-mono text-acc text-sm">// 01</div>
+      <h2 class="font-mono text-2xl font-bold mt-2">About</h2>
+    </div>
+    <div class="reveal space-y-5 text-sub leading-relaxed max-w-2xl">
+      <p>
+        I started out as a trainee developer and worked my way into full-stack engineering, spending
+        most of my time on the kind of systems a business can't afford to have go down: payment and
+        order processing, RESTful APIs, and the dashboards customers actually use. At
+        <span class="text-fg">Inokrit Solution</span> I designed eight object-oriented Java backend
+        services with <span class="text-fg">Spring Boot</span> and <span class="text-fg">Apache Camel</span>
+        that processed over a thousand payment and order transactions a day and cut data discrepancies
+        by around 30%.
+      </p>
+      <p>
+        I work mainly in <span class="text-fg">Java</span> and <span class="text-fg">Python</span> on the
+        backend, with <span class="text-fg">React</span> on the front end — I've built real-time payment
+        and claims dashboards wired into Java payment APIs. I follow secure software development (SSDLC)
+        practices, write automated tests with a TDD mindset, and have set up CI/CD pipelines with
+        <span class="text-fg">GitHub Actions</span> and <span class="text-fg">AWS</span> that took
+        deployments from two hours down to thirty minutes.
+      </p>
+      <p>
+        I've worked in Agile Scrum teams the whole time, collaborating closely with product management
+        and QA through sprint planning, code reviews, and retrospectives. I like writing code that's
+        easy for the next person to read and maintain, and I'm comfortable troubleshooting defects
+        across dev, test, and production. Right now I'm finishing my Master's in Computer Science and
+        looking for my next software engineering role.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-3 pt-2 font-mono text-[13px]">
+        <div class="bg-panel border border-line rounded px-4 py-3">
+          <span class="text-sub">location:</span> <span class="text-fg">Springfield, MA, USA</span>
+        </div>
+        <div class="bg-panel border border-line rounded px-4 py-3">
+          <span class="text-sub">phone:</span> <span class="text-fg">+1 (413) 328-0148</span>
+        </div>
+        <div class="bg-panel border border-line rounded px-4 py-3">
+          <span class="text-sub">degree:</span> <span class="text-fg">MS Computer Science</span>
+        </div>
+        <div class="bg-panel border border-line rounded px-4 py-3">
+          <span class="text-sub">cert:</span> <span class="text-fg">AWS Cloud Practitioner</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="py-20 border-t border-line/60">
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-[260px_1fr] gap-12">
+    <div class="reveal">
+      <div class="font-mono text-acc text-sm">// 02</div>
+      <h2 class="font-mono text-2xl font-bold mt-2">Skills</h2>
+      <p class="text-sub text-sm mt-3">The stack I reach for, grouped by where it lives.</p>
+    </div>
+    <div class="reveal grid sm:grid-cols-2 gap-4" id="skill-grid"></div>
+  </div>
+</section>
+
+<!-- ===== WORK / TIMELINE ===== -->
+<section id="work" class="py-20 border-t border-line/60">
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-[260px_1fr] gap-12">
+    <div class="reveal">
+      <div class="font-mono text-acc text-sm">// 03</div>
+      <h2 class="font-mono text-2xl font-bold mt-2">Experience</h2>
+      <p class="text-sub text-sm mt-3">Where I've worked — most recent first.</p>
+    </div>
+    <div class="relative" id="timeline">
+      <div id="timeline-line" class="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-acc via-line to-transparent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="py-20 border-t border-line/60">
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-[260px_1fr] gap-12">
+    <div class="reveal">
+      <div class="font-mono text-acc text-sm">// 04</div>
+      <h2 class="font-mono text-2xl font-bold mt-2">Projects</h2>
+      <p class="text-sub text-sm mt-3">Selected academic & personal builds.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-5" id="project-grid"></div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="py-20 border-t border-line/60">
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-[260px_1fr] gap-12">
+    <div class="reveal">
+      <div class="font-mono text-acc text-sm">// 05</div>
+      <h2 class="font-mono text-2xl font-bold mt-2">Contact</h2>
+      <p class="text-sub text-sm mt-3">Open to software engineering roles. Let's talk.</p>
+    </div>
+    <div class="reveal max-w-xl w-full">
+      <!--
+        NETLIFY FORMS — works automatically when this site is deployed on Netlify.
+        Netlify detects the form at deploy time (via the name + data-netlify attributes
+        below) and collects submissions in your Netlify dashboard under Forms > "contact".
+        To get email notifications: Netlify dashboard > Forms > Settings & notifications
+        > add an email notification to mbagul30@gmail.com.
+        No account key needed. NOTE: this only works while the site is hosted on Netlify.
+      -->
+      <form id="contact-form" name="contact" method="POST"
+            data-netlify="true" netlify-honeypot="bot-field"
+            action="/?submitted=true"
+            class="space-y-4 font-mono text-sm">
+        <!-- Netlify needs this hidden input to match submissions to the form -->
+        <input type="hidden" name="form-name" value="contact">
+        <!-- honeypot: humans never see this; bots that fill it get rejected -->
+        <p style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+          <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="text-sub text-xs">name</span>
+            <input required name="name" type="text" class="mt-1 w-full bg-panel border border-line rounded px-3 py-2 text-fg focus:border-acc focus:outline-none transition-colors" placeholder="Jane Doe">
+          </label>
+          <label class="block">
+            <span class="text-sub text-xs">email</span>
+            <input required name="email" type="email" class="mt-1 w-full bg-panel border border-line rounded px-3 py-2 text-fg focus:border-acc focus:outline-none transition-colors" placeholder="jane@company.com">
+          </label>
+        </div>
+        <label class="block">
+          <span class="text-sub text-xs">message</span>
+          <textarea required name="message" rows="4" class="mt-1 w-full bg-panel border border-line rounded px-3 py-2 text-fg focus:border-acc focus:outline-none transition-colors resize-y" placeholder="Hi Mayur, we're hiring for..."></textarea>
+        </label>
+        <button type="submit" class="px-5 py-2.5 rounded bg-acc text-ink font-semibold hover:bg-acc/90 transition-colors">
+          send message
+        </button>
+        <p id="form-status" class="text-xs text-sub"></p>
+      </form>
+
+      <div class="mt-8 flex flex-wrap gap-4 font-mono text-[13px] text-sub">
+        <a href="mailto:mbagul30@gmail.com" class="link-underline hover:text-acc">mbagul30@gmail.com</a>
+        <span class="text-line">·</span>
+        <a href="https://github.com/mayurbagul03" target="_blank" rel="noopener" class="link-underline hover:text-acc">github.com/mayurbagul03</a>
+        <span class="text-line">·</span>
+        <a href="https://www.linkedin.com/in/mbagul/" target="_blank" rel="noopener" class="link-underline hover:text-acc">linkedin.com/in/mbagul</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-line/60 py-8">
+  <div class="max-w-6xl mx-auto px-5 font-mono text-xs text-sub flex flex-wrap justify-between gap-3">
+    <span>© 2026 Mayur Bagul</span>
+    <span class="text-line">built with html · tailwind · vanilla js</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

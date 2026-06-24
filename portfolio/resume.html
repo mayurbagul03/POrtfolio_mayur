@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mayur Sunil Bagul — Résumé</title>
+<meta name="description" content="Résumé of Mayur Sunil Bagul, Full-stack Software Engineer." />
+<style>
+  :root {
+    --ink: #000000;
+    --muted: #404040;
+    --rule: #000000;
+    --accent: #1a1a1a;
+    --page-bg: #e6e6e6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--page-bg);
+    font-family: Calibri, "Segoe UI", Candara, "Trebuchet MS", sans-serif;
+    color: var(--ink);
+    line-height: 1.3;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* toolbar (screen only) */
+  .toolbar {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; gap: 10px; justify-content: center; align-items: center;
+    padding: 10px; background: #2b2b2b; color: #fff;
+    font-family: "Segoe UI", sans-serif; font-size: 13px;
+  }
+  .toolbar a, .toolbar button {
+    font: inherit; cursor: pointer;
+    background: #3c3c3c; color: #fff; border: 1px solid #555;
+    padding: 7px 14px; border-radius: 4px; text-decoration: none;
+    transition: background .15s;
+  }
+  .toolbar a:hover, .toolbar button:hover { background: #4a4a4a; }
+  .toolbar .primary { background: #2b579a; border-color: #2b579a; }
+  .toolbar .primary:hover { background: #1e3f6f; }
+
+  /* the "page" */
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 28px auto;
+    padding: 0.85in 1in;
+    background: #fff;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+  }
+
+  /* header */
+  .name {
+    font-size: 26pt;
+    font-weight: 700;
+    letter-spacing: .3px;
+    margin: 0;
+    text-align: center;
+  }
+  .title-line {
+    text-align: center;
+    font-size: 11.5pt;
+    color: var(--muted);
+    margin: 3px 0 6px;
+    letter-spacing: .4px;
+  }
+  .contact {
+    text-align: center;
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .contact a { color: #2b579a; text-decoration: none; }
+  .contact a:hover { text-decoration: underline; }
+
+  /* section heading */
+  h2.section {
+    font-size: 12pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 16px 0 6px;
+    padding-bottom: 2px;
+    border-bottom: 1.5px solid var(--rule);
+  }
+
+  p.summary { font-size: 10.5pt; margin: 0; text-align: justify; }
+
+  /* entry */
+  .entry { margin-bottom: 11px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 12px;
+  }
+  .entry-role { font-size: 10.5pt; font-weight: 700; }
+  .entry-org { font-weight: 400; font-style: italic; }
+  .entry-date { font-size: 9.5pt; color: var(--muted); white-space: nowrap; }
+  ul.bullets {
+    margin: 4px 0 0; padding-left: 20px;
+  }
+  ul.bullets li { font-size: 10pt; margin-bottom: 2.5px; text-align: justify; }
+
+  /* projects + education + skills */
+  .proj { margin-bottom: 8px; }
+  .proj-name { font-size: 10.5pt; font-weight: 700; }
+  .proj-org { font-size: 9.5pt; color: var(--muted); font-style: italic; }
+  .proj-desc { font-size: 10pt; margin: 2px 0 0; text-align: justify; }
+
+  .edu-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+  .edu-deg { font-size: 10.5pt; font-weight: 700; }
+  .edu-detail { font-size: 9.5pt; color: var(--muted); font-style: italic; }
+  .edu-date { font-size: 9.5pt; color: var(--muted); white-space: nowrap; }
+
+  .skill-line { font-size: 10pt; margin: 0 0 3px; }
+  .skill-line b { font-weight: 700; }
+
+  @media print {
+    @page { size: Letter; margin: 0; }
+    body { background: #fff; }
+    .toolbar { display: none; }
+    .page {
+      width: auto; min-height: 0; margin: 0;
+      padding: 0.4in 0.55in;
+      box-shadow: none;
+      font-size: 9.3pt;
+      line-height: 1.2;
+    }
+    a { color: #000 !important; text-decoration: none; }
+
+    /* compress type + spacing so everything fits on one Letter page */
+    .name { font-size: 20pt; }
+    .title-line { font-size: 10pt; margin: 2px 0 3px; }
+    .contact { font-size: 8.3pt; margin-bottom: 2px; }
+    h2.section { font-size: 10pt; margin: 8px 0 3px; padding-bottom: 1px; letter-spacing: .6px; }
+    p.summary { font-size: 8.8pt; }
+    .entry { margin-bottom: 6px; }
+    .entry-role, .edu-deg, .proj-name { font-size: 9pt; }
+    .entry-date, .edu-date, .proj-org, .edu-detail { font-size: 8pt; }
+    ul.bullets { margin-top: 2px; padding-left: 16px; }
+    ul.bullets li { font-size: 8.6pt; margin-bottom: 1px; }
+    .edu-row { margin-bottom: 3px; }
+    .proj { margin-bottom: 5px; }
+    .proj-desc { font-size: 8.6pt; }
+    .skill-line { font-size: 8.6pt; margin-bottom: 1.5px; }
+
+    /* never split an entry or its bullets across pages */
+    .entry, .proj, .edu-row, ul.bullets li { break-inside: avoid; page-break-inside: avoid; }
+    h2.section { break-after: avoid; page-break-after: avoid; }
+  }
+  @media (max-width: 880px) {
+    .page { width: 100%; margin: 0; padding: 28px 20px; box-shadow: none; }
+    .entry-head, .edu-row { flex-direction: column; gap: 1px; }
+    .entry-date, .edu-date { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="index.html">← Back to portfolio</a>
+  <button class="primary" onclick="window.print()">Print / Save as PDF</button>
+  <a href="resume.pdf" download>Download PDF</a>
+</div>
+
+<div class="page">
+  <!-- Header -->
+  <h1 class="name">Mayur Sunil Bagul</h1>
+  <div class="title-line">Full-stack Software Engineer</div>
+  <div class="contact">
+    Springfield, MA, USA &nbsp;|&nbsp; +1 (413) 328-0148 &nbsp;|&nbsp;
+    <a href="mailto:mbagul30@gmail.com">mbagul30@gmail.com</a>
+  </div>
+  <div class="contact">
+    <a href="https://www.linkedin.com/in/mbagul/" target="_blank" rel="noopener">linkedin.com/in/mbagul</a>
+    &nbsp;|&nbsp;
+    <a href="https://github.com/mayurbagul03" target="_blank" rel="noopener">github.com/mayurbagul03</a>
+  </div>
+
+  <!-- Summary -->
+  <h2 class="section">Summary</h2>
+  <p class="summary">
+    Full-stack Software Engineer with 3+ years building object-oriented backend services in Java and
+    Python, RESTful APIs, and batch processing systems. Applies SSDLC, collaborates in Agile Scrum
+    with product management and QA, and troubleshoots defects across dev, test, and production.
+  </p>
+
+  <!-- Education -->
+  <h2 class="section">Education</h2>
+  <div class="edu-row">
+    <div>
+      <div class="edu-deg">MS in Computer Science, Western New England University</div>
+      <div class="edu-detail">Advanced Software Engineering, AI &amp; ML Engineering, Software Security</div>
+    </div>
+    <div class="edu-date">Aug 2024 – May 2026</div>
+  </div>
+  <div class="edu-row">
+    <div>
+      <div class="edu-deg">BE in Computer Science Engineering, University of Mumbai</div>
+      <div class="edu-detail">Data Structures, Operating Systems, Natural Language Processing</div>
+    </div>
+    <div class="edu-date">Aug 2016 – Nov 2020</div>
+  </div>
+
+  <!-- Experience -->
+  <h2 class="section">Professional Experience</h2>
+
+  <div class="entry">
+    <div class="entry-head">
+      <div class="entry-role">Full-stack Software Engineer <span class="entry-org">— Inokrit Solution, India</span></div>
+      <div class="entry-date">Jun 2022 – Jul 2024</div>
+    </div>
+    <ul class="bullets">
+      <li>Designed 8 object-oriented Java backend services using open-source technologies (Spring Boot, Apache Camel) to process 1,000+ daily payment and order transactions, integrating payment web services and reducing data discrepancies by ~30%.</li>
+      <li>Collaborated with product management in Agile Scrum sprint planning, backlog refinement, daily standups, and retrospectives, improving estimation accuracy and reducing sprint spillover by ~25%.</li>
+      <li>Refactored an insurance portal (policy and payments) in a compliance-driven environment applying SSDLC practices, reducing code redundancy by 40% (SonarQube) and improving JUnit test coverage by 10%.</li>
+      <li>Developed full-stack React front-end components integrated with Java backend payment APIs, surfacing real-time payment and claims data in dashboard views, reducing routine support calls by 30% and improving customer satisfaction.</li>
+      <li>Troubleshot production defects and built CI/CD pipelines (GitHub Actions, AWS EC2/S3/CloudWatch) for job execution, monitoring, and reporting, cutting deployment time from 2 hours to 30 minutes.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <div class="entry-role">Frontend Developer <span class="entry-org">— Tekno Point, India</span></div>
+      <div class="entry-date">Oct 2021 – Apr 2022</div>
+    </div>
+    <ul class="bullets">
+      <li>Resolved 30+ recurring production UI issues tracked through Agile sprint cycles, collaborating with developers and QA to reduce customer support tickets by 65% and report project status to stakeholders.</li>
+      <li>Designed dashboard views that surfaced the most-requested coverage and claims information, reducing routine support calls by 30% and improving overall customer self-service satisfaction.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-head">
+      <div class="entry-role">Trainee Software Developer <span class="entry-org">— Kings Crown Solution LLP, India</span></div>
+      <div class="entry-date">Jul 2020 – Sep 2021</div>
+    </div>
+    <ul class="bullets">
+      <li>Built full-stack REST APIs and front-end components in JavaScript and Node.js applying service-oriented architecture, with MySQL on the backend.</li>
+      <li>Learned and applied best practices in software development methodologies under senior guidance; documented technical specifications and system configurations to support team knowledge transfer and continuous improvement.</li>
+    </ul>
+  </div>
+
+  <!-- Projects -->
+  <h2 class="section">Projects</h2>
+  <div class="proj">
+    <div class="proj-name">Self-Sovereign ID Backend by a Blockchain <span class="proj-org">— Western New England University, USA</span></div>
+    <p class="proj-desc">Architected scalable Python backend services on Linux using service-oriented architecture across the full SDLC in a distributed system; delivered secure, fault-tolerant identity verification across distributed healthcare nodes with full audit logging, applying secure software development practices.</p>
+  </div>
+  <div class="proj">
+    <div class="proj-name">Full-Stack RESTful Expenses Analytics App <span class="proj-org">— Western New England University, USA</span></div>
+    <p class="proj-desc">Built a full-stack web app with Python, Node.js/Express, and React on Linux, with RESTful endpoints, SQL-backed financial data storage, and automated test suites (80%+ coverage, TDD); implemented reporting features enabling sub-second search across 12+ months of data.</p>
+  </div>
+
+  <!-- Skills -->
+  <h2 class="section">Technical Skills</h2>
+  <p class="skill-line"><b>Languages &amp; OOP:</b> Java (object-oriented), Python, JavaScript/TypeScript, Unix/Linux shell scripting (bash), HTML, C++</p>
+  <p class="skill-line"><b>Frontend:</b> React, Redux, Context API, Angular</p>
+  <p class="skill-line"><b>Backend &amp; APIs:</b> Spring Boot, Apache Camel, REST API design, Node.js/Express, microservices, batch processing</p>
+  <p class="skill-line"><b>Agile &amp; Practices:</b> Scrum, sprint planning, backlog grooming, daily standups, retrospectives, code reviews</p>
+  <p class="skill-line"><b>Testing &amp; Quality:</b> Automated testing, Jest, TDD, debugging, production support</p>
+  <p class="skill-line"><b>Cloud &amp; DevOps:</b> AWS (EC2, S3, IAM, CloudWatch), CI/CD, GitHub Actions, Docker, Jenkins, Azure</p>
+  <p class="skill-line"><b>Tools &amp; Practices:</b> Git, GitHub, Agile/Scrum, Jest, code reviews, Figma, Swagger, MS Office Suite</p>
+  <p class="skill-line"><b>Certifications:</b> AWS Cloud Practitioner</p>
+</div>
+
+</body>
+</html>
